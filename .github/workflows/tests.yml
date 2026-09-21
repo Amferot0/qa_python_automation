@@ -17,7 +17,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests pytest
+          pip install requests pytest pytest-playwright
+          playwright install --with-deps chromium
+          
 
       - name: Run tests
         run: pytest -v
