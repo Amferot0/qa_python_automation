@@ -17,10 +17,7 @@ def test_status_codes(url, excepted):
 
 @pytest.mark.parametrize("post_id", [1, 2, 3,])
 
-def test_get_post(post_id):
-    response = requests.get(f"{BASE_URL}/posts/{post_id}") 
-    # Правило: f-строка — это инструмент сборки ТЕКСТА (str). 
-    # Используй её, когда результатом должна быть строка. 
-    # Если программе нужна структура другого типа (dict, list, число) — собирай её напрямую.
+def test_get_post(api, post_id):
+    response = api.get_post(post_id) 
     assert response.status_code == 200
     assert response.json()["id"] == post_id
