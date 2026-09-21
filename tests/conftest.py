@@ -1,5 +1,6 @@
 import pytest
 import requests
+import allure
 
 BASE_URL = "https://jsonplaceholder.typicode.com"
 
@@ -16,3 +17,16 @@ from core.api_client import ApiClient
 def api():
     client = ApiClient(BASE_URL)
     yield client
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+    if report.when == "call" and report.failed:
+        page = item.funcargs.get("page")
+        if page is not None:
+            allure.attach(
+                page.screenshot(),
+                name="screenshot on failure",
+                attachment_type=allure.attachment_type.PNG,
+            )

@@ -1,5 +1,6 @@
 from pages.products_page import ProductsPage
 
+import allure
 
 class LoginPage:
     URL = "https://www.saucedemo.com/"
@@ -11,10 +12,12 @@ class LoginPage:
         self.login_button = page.locator("#login-button")
         self.error_message = page.locator(".error-message-container")
 
+    @allure.step("Открыть страницу логина")
     def open(self):
         self.page.goto(self.URL) # открыть сайт
         return self
 
+    @allure.step("Ввести логин {username} и пароль, нажать вход")
     def login(self, username, password):
         self.username_input.fill(username) # ввести текст в поле
         self.password_input.fill(password) 
