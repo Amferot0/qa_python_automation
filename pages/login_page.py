@@ -14,7 +14,7 @@ class LoginPage:
 
     @allure.step("Открыть страницу логина")
     def open(self):
-        self.page.goto(self.URL) # открыть сайт
+        self.page.goto(self.URL, wait_until="domcontentloaded") # открыть сайт
         return self
 
     @allure.step("Ввести логин {username} и пароль, нажать вход")

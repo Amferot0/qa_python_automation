@@ -30,6 +30,9 @@ class ApiClient:
     def create_post(self, payload):
         return self.session.post(f"{self.base_url}/posts", json=payload) # добавляем пост
 
+    def update_post(self, post_id, payload):
+        return self.session.put(f"{self.base_url}/posts/{post_id}", json=payload)
+
     def delete_post(self, post_id):
         return self.session.delete(f"{self.base_url}/posts/{post_id}") # удаляем пост
 
