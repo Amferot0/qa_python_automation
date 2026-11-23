@@ -1,6 +1,7 @@
 import allure
 
 from pages.products_page import ProductsPage
+from playwright.sync_api import expect
 
 class LoginPage:
     URL = "https://www.saucedemo.com/"
@@ -25,5 +26,4 @@ class LoginPage:
         return ProductsPage(self.page)   # после входа мы на странице товаров
 
     def is_error_visible(self):
-        self.error_message.wait_for()
-        return self.error_message.is_visible()
+        expect(self.error_message).to_be_visible()

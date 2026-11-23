@@ -1,6 +1,5 @@
 import allure
 from pages.login_page import LoginPage
-#from pages.cart_page import CartPage
 
 @allure.title("Добавление товара в корзину")
 def test_add_to_cart(page):

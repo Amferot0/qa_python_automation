@@ -41,7 +41,7 @@ jobs:
           path: allure-report
       
       - name: Deploy report to GitHub Pages
-        if: always()
+        if: always() && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

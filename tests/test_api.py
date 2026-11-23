@@ -9,6 +9,6 @@ def test_get_negative():
     response = requests.get("https://jsonplaceholder.typicode.com/posts/9999")
     assert response.status_code == 404
 
-def test_delete_user():
+def test_delete_post():
     response = requests.delete("https://jsonplaceholder.typicode.com/posts/1")
     assert response.status_code == 200

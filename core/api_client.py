@@ -14,27 +14,28 @@ class ApiClient:
         response = self.session.post(
             f"{self.base_url}/login",
             json={"username": username, "password": password},
+            timeout=10,
         )
         self.set_token(response.json()["token"])
         return response
 
     def get_users(self):
-        return self.session.get(f"{self.base_url}/users") # получаем список пользователей
+        return self.session.get(f"{self.base_url}/users", timeout=10) # получаем список пользователей
 
     def get_user(self, user_id):
-        return self.session.get(f"{self.base_url}/users/{user_id}") # получаем пользователя
+        return self.session.get(f"{self.base_url}/users/{user_id}", timeout=10) # получаем пользователя
 
     def get_post(self, post_id):
-        return self.session.get(f"{self.base_url}/posts/{post_id}") # получаем пост
+        return self.session.get(f"{self.base_url}/posts/{post_id}", timeout=10) # получаем пост
 
     def create_post(self, payload):
-        return self.session.post(f"{self.base_url}/posts", json=payload) # добавляем пост
+        return self.session.post(f"{self.base_url}/posts", json=payload, timeout=10) # добавляем пост
 
     def update_post(self, post_id, payload):
-        return self.session.put(f"{self.base_url}/posts/{post_id}", json=payload)
+        return self.session.put(f"{self.base_url}/posts/{post_id}", json=payload, timeout=10)
 
     def delete_post(self, post_id):
-        return self.session.delete(f"{self.base_url}/posts/{post_id}") # удаляем пост
+        return self.session.delete(f"{self.base_url}/posts/{post_id}", timeout=10) # удаляем пост
 
     # Если надо использовать f-строку
     # Правило: f-строка — это инструмент сборки ТЕКСТА (str). 

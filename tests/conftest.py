@@ -17,6 +17,7 @@ from core.api_client import ApiClient
 def api():
     client = ApiClient(BASE_URL)
     yield client
+    client.session.close()
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):

@@ -13,4 +13,4 @@ def test_login_success(page):
 def test_login_wrong_password(page):
     login_page = LoginPage(page).open()
     login_page.login("standard_user", "wrong_password")
-    assert login_page.is_error_visible()
+    login_page.is_error_visible()
